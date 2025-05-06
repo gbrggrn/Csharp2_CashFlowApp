@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gusta\\source\\repos\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp.csproj": {}
+    "C:\\Users\\gusta\\source\\repos\\C#\\MAU_C#\\C#2\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gusta\\source\\repos\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp.csproj": {
+    "C:\\Users\\gusta\\source\\repos\\C#\\MAU_C#\\C#2\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gusta\\source\\repos\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp.csproj",
+        "projectUniqueName": "C:\\Users\\gusta\\source\\repos\\C#\\MAU_C#\\C#2\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp.csproj",
         "projectName": "Csharp2_CashFlowApp",
-        "projectPath": "C:\\Users\\gusta\\source\\repos\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp.csproj",
+        "projectPath": "C:\\Users\\gusta\\source\\repos\\C#\\MAU_C#\\C#2\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp.csproj",
         "packagesPath": "C:\\Users\\gusta\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gusta\\source\\repos\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\obj\\",
+        "outputPath": "C:\\Users\\gusta\\source\\repos\\C#\\MAU_C#\\C#2\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

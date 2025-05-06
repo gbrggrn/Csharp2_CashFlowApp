@@ -5,8 +5,107 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Csharp2_CashFlowApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="700" Width="500">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Transaction ListView -->
+        <ListView Grid.Row="1" Margin="10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Date" Width="100"/>
+                    <GridViewColumn Header="Category" Width="100"/>
+                    <GridViewColumn Header="Amount" Width="100"/>
+                    <GridViewColumn Header="Description" Width="170"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- Accounts ListView -->
+            <ListView Grid.Column="1" Margin="10">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" Width="120"/>
+                        <GridViewColumn Header="Balance" Width="100"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <!-- Account input controls -->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Margin="10" x:Name="accNameLbl" Content="Account name" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBox Grid.Column="1" Margin="10" x:Name="accNameTxtBox" Height="20"/>
+                </Grid>
+
+                <!-- Account manipulators -->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0" x:Name="addAccBtn" Content="Add" Margin="10"/>
+                    <Button Grid.Column="1" x:Name="deleteAccBtn" Content="Delete" Margin="10"/>
+                    <Button Grid.Column="2" x:Name="changeAccBtn" Content="Edit" Margin="10"/>
+                </Grid>
+
+                <!-- Transaction input controls -->
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" Orientation="Vertical" Margin="10">
+                        <Label x:Name="categoryLbl" Content="Category"/>
+                        <Label x:Name="amountLbl" Content="Amount"/>
+                        <Label x:Name="descriptionLbl" Content="Description"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Orientation="Vertical" Margin="10">
+                        <ComboBox x:Name="categoryComboBox"/>
+                        <TextBox x:Name="amountTxtBox" Margin="0,8,0,0"/>
+                        <TextBox x:Name="descriptionTxtBox" Margin="0,8,0,0"/>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Transaction manipulator -->
+                <Button x:Name="addTransactionBtn" Content="Add transaction" Margin="10" Grid.Row="3"/>
+            </Grid>
+        </Grid>
+        
+        <!-- Report/Optional features -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" x:Name="reportBtn" Content="Manage reports" Margin="10"/>
+            <Button Grid.Column="1" x:Name="changeMeBtn" Content="Other stuff" Margin="10"/>
+        </Grid>
     </Grid>
 </Window>

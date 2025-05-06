@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Csharp2_CashFlowApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7236632959f9232ab4fa7c3ee0a813dbfab127bb")]
 [assembly: System.Reflection.AssemblyProductAttribute("Csharp2_CashFlowApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Csharp2_CashFlowApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
