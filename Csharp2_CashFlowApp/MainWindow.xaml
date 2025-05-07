@@ -14,7 +14,10 @@
         </Grid.RowDefinitions>
         
         <!-- Transaction ListView -->
-        <ListView Grid.Row="1" Margin="10">
+        <ListView Grid.Row="1" Margin="10"
+                  x:Name="transactionListView"
+                  ItemsSource="{Binding ObservableAccounts}"
+                  >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Date" Width="100"/>
@@ -32,11 +35,14 @@
             </Grid.ColumnDefinitions>
             
             <!-- Accounts ListView -->
-            <ListView Grid.Column="1" Margin="10">
+            <ListView Grid.Column="1" Margin="10"
+                      x:Name="accsListView"
+                      ItemsSource="{Binding ObservableAccounts}"
+                      SelectedItem="{Binding SelectedAccount, Mode=TwoWay}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Name" Width="120"/>
-                        <GridViewColumn Header="Balance" Width="100"/>
+                        <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Balance" Width="100" DisplayMemberBinding="{Binding Balance}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -67,9 +73,9 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
-                    <Button Grid.Column="0" x:Name="addAccBtn" Content="Add" Margin="10"/>
-                    <Button Grid.Column="1" x:Name="deleteAccBtn" Content="Delete" Margin="10"/>
-                    <Button Grid.Column="2" x:Name="changeAccBtn" Content="Edit" Margin="10"/>
+                    <Button Grid.Column="0" x:Name="addAccBtn" Content="Add" Margin="10" Click="AddAccBtn_Click"/>
+                    <Button Grid.Column="1" x:Name="deleteAccBtn" Content="Delete" Margin="10" Click="DeleteAccBtn_Click"/>
+                    <Button Grid.Column="2" x:Name="editAccBtn" Content="Edit" Margin="10" Click="EditAccBtn_Click"/>
                 </Grid>
 
                 <!-- Transaction input controls -->
@@ -86,14 +92,14 @@
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" Orientation="Vertical" Margin="10">
-                        <ComboBox x:Name="categoryComboBox"/>
-                        <TextBox x:Name="amountTxtBox" Margin="0,8,0,0"/>
-                        <TextBox x:Name="descriptionTxtBox" Margin="0,8,0,0"/>
+                        <ComboBox x:Name="categoryComboBox" IsEnabled="False"/>
+                        <TextBox x:Name="amountTxtBox" Margin="0,8,0,0" IsEnabled="False"/>
+                        <TextBox x:Name="descriptionTxtBox" Margin="0,8,0,0" IsEnabled="False"/>
                     </StackPanel>
                 </Grid>
 
                 <!-- Transaction manipulator -->
-                <Button x:Name="addTransactionBtn" Content="Add transaction" Margin="10" Grid.Row="3"/>
+                <Button x:Name="addTransactionBtn" Content="Add transaction" Margin="10" Grid.Row="3" Click="AddTransactionBtn_Click" IsEnabled="False"/>
             </Grid>
         </Grid>
         
@@ -104,7 +110,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" x:Name="reportBtn" Content="Manage reports" Margin="10"/>
+            <Button Grid.Column="0" x:Name="reportBtn" Content="Manage reports" Margin="10" Click="ReportBtn_Click"/>
             <Button Grid.Column="1" x:Name="changeMeBtn" Content="Other stuff" Margin="10"/>
         </Grid>
     </Grid>

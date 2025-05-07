@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace Csharp2_CashFlowApp.Model
 {
-    internal class TransactionDTO
+    public class TransactionDTO
     {
-        DateTime DateTimeTransfer {  get; set; }
-        double AmountTransfer { get; set; }
-        TransactionEntry.Category? CategoryTransfer {  get; set; }
-        string Description { get; set; } = string.Empty;
+        public Enums.CategoryType CategoryType { get; set; }
+        public string CategoryName { get; set; } = string.Empty;
+        public DateTime DateTimeTransfer {  get; set; }
+        public double AmountTransfer { get; set; }
+        public string Description { get; set; } = string.Empty;
     }
 }
