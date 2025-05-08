@@ -144,7 +144,9 @@ namespace Csharp2_CashFlowApp
 
         private void ToggleTransactionInputControls(object sender, RoutedEventArgs e)
         {
+            datePicker.IsEnabled = true;
             categoryComboBox.IsEnabled = true;
+            categoryNameComboBox.IsEnabled = true;
             amountTxtBox.IsEnabled = true;
             descriptionTxtBox.IsEnabled = true;
             addTransactionBtn.IsEnabled = true;
@@ -152,7 +154,17 @@ namespace Csharp2_CashFlowApp
 
         private void ReportBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (transactionListView.Items.Count > 0)
+            {
+                int index = accsListView.SelectedIndex;
+                ReportWindow reportWindow = new ReportWindow(accountManager, index);
 
+                reportWindow.ShowDialog();
+            }
+            else
+            {
+                MessageBoxes.DisplayErrorBox("No transactions added to build reports from!");
+            }
         }
 
         private void ClearTransactionInputControls()
