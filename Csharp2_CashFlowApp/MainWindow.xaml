@@ -5,25 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Csharp2_CashFlowApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="500">
+        Title="MainWindow" Height="700" Width="600">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="250"/>
+            <RowDefinition Height="275"/>
+            <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         
+        <!-- Sorting controls -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Label x:Name="monthSortLbl" Content="Sort by month" Margin="10,0,0,0"/>
+            <RadioButton x:Name="monthSortRadioBtn" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <Label x:Name="categoryTypeSortLbl" Content="Sort by category type"/>
+            <RadioButton x:Name="categoryTypeSortRadioBtn" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <Label x:Name="categoryNameSortLbl" Content="Sort by category name"/>
+            <RadioButton x:Name="categoryNameSortRadioBtn" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <Label x:Name="amountSortLbl" Content="Sort by amount"/>
+            <RadioButton x:Name="amountSortRadioBtn" VerticalAlignment="Center" Margin="0,0,10,0"/>
+        </StackPanel>
+        
         <!-- Transaction ListView -->
-        <ListView Grid.Row="1" Margin="10"
+        <ListView Grid.Row="2" Margin="10"
                   x:Name="transactionListView"
-                  ItemsSource="{Binding ObservableAccounts}"
-                  >
+                  ItemsSource="{Binding ObservableTransactions}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Date" Width="100"/>
-                    <GridViewColumn Header="Category" Width="100"/>
-                    <GridViewColumn Header="Amount" Width="100"/>
-                    <GridViewColumn Header="Description" Width="170"/>
+                    <GridViewColumn Header="Date" Width="100" DisplayMemberBinding="{Binding Date}"/>
+                    <GridViewColumn Header="Category type" Width="100" DisplayMemberBinding="{Binding Category.CategoryType}"/>
+                    <GridViewColumn Header="Category name" Width="100" DisplayMemberBinding="{Binding Category.CategoryName}"/>
+                    <GridViewColumn Header="Amount" Width="100" DisplayMemberBinding="{Binding Amount}"/>
+                    <GridViewColumn Header="Description" Width="170" DisplayMemberBinding="{Binding Description}"/>
                 </GridView>
             </ListView.View>
         </ListView>
@@ -41,8 +54,8 @@
                       SelectedItem="{Binding SelectedAccount, Mode=TwoWay}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Header="Balance" Width="100" DisplayMemberBinding="{Binding Balance}"/>
+                        <GridViewColumn Header="Name" Width="160" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Balance" Width="110" DisplayMemberBinding="{Binding Balance}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -86,13 +99,15 @@
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Grid.Column="0" Orientation="Vertical" Margin="10">
-                        <Label x:Name="categoryLbl" Content="Category"/>
+                        <Label x:Name="categoryLbl" Content="Category type"/>
+                        <Label x:Name="categoryNameLbl" Content="Category name"/>
                         <Label x:Name="amountLbl" Content="Amount"/>
                         <Label x:Name="descriptionLbl" Content="Description"/>
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" Orientation="Vertical" Margin="10">
                         <ComboBox x:Name="categoryComboBox" IsEnabled="False"/>
+                        <ComboBox x:Name="categoryNameComboBox" IsEnabled="False" Margin="0,8,0,0"/>
                         <TextBox x:Name="amountTxtBox" Margin="0,8,0,0" IsEnabled="False"/>
                         <TextBox x:Name="descriptionTxtBox" Margin="0,8,0,0" IsEnabled="False"/>
                     </StackPanel>
@@ -104,7 +119,7 @@
         </Grid>
         
         <!-- Report/Optional features -->
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>

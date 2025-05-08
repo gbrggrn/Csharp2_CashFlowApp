@@ -13,5 +13,18 @@ namespace Csharp2_CashFlowApp.Model
             Expense,
             Revenue
         }
+
+        public enum CategoryName
+        {
+            Unknown,
+            Food,
+            Transport,
+            Restaurant,
+            Beer,
+            Bribe,
+            Clothes,
+            Car,
+            Gift
+        }
     }
 }

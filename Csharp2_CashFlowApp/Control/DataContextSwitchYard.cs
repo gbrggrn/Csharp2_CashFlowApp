@@ -18,6 +18,7 @@ namespace Csharp2_CashFlowApp.Control
             {
                 if (SelectedAccount?.transactionManager.transactionEntries != null)
                 {
+                    Console.WriteLine("Transactions observed");
                     return SelectedAccount?.transactionManager.transactionEntries!;
                 }
                 else
@@ -33,10 +34,8 @@ namespace Csharp2_CashFlowApp.Control
             ObservableAccounts = accountManagerIn.Accounts;
         }
 
-        public TransactionManager? CurrentTransactionManager => SelectedAccount?.transactionManager;
-
         private Account? selectedAccount;
-        internal Account? SelectedAccount
+        public Account? SelectedAccount
         {
             get => selectedAccount;
             set
@@ -44,8 +43,9 @@ namespace Csharp2_CashFlowApp.Control
                 if (selectedAccount != value)
                 {
                     selectedAccount = value;
-                    OnPropertyChanged(nameof(SelectedAccount));
-                    OnPropertyChanged(nameof(CurrentTransactionManager));
+                    Console.WriteLine("SelectedAccountChanged");
+                    //OnPropertyChanged(nameof(SelectedAccount));
+                    OnPropertyChanged(nameof(ObservableTransactions));
                 }
             }
         }

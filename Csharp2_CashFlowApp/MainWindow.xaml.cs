@@ -1,4 +1,6 @@
 ﻿using Csharp2_CashFlowApp.Control;
+using Csharp2_CashFlowApp.Model;
+using Csharp2_CashFlowApp.Helpers;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,20 +22,42 @@ namespace Csharp2_CashFlowApp
         private readonly AccountManager accountManager;
         private readonly DataContextSwitchYard dataContextSwitchYard;
 
+        private const int maxCharLength = 20;
+
         public MainWindow()
         {
+            InitializeComponent();
             accountManager = new();
             dataContextSwitchYard = new(accountManager);
             DataContext = dataContextSwitchYard;
-            InitializeComponent();
             accsListView.SelectionChanged += ToggleTransactionInputControls;
+            LoadCategories();
+        }
+        
+        private void LoadCategories()
+        {
+            categoryComboBox.ItemsSource = Enum.GetValues(typeof(Enums.CategoryType));
+            categoryComboBox.SelectedIndex = 0;
+
+            categoryNameComboBox.ItemsSource = Enum.GetValues(typeof(Enums.CategoryName));
+            categoryNameComboBox.SelectedIndex = 0;
         }
 
         private void AddAccBtn_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine($"Add account button clicked {accNameTxtBox.Text}");
-            accountManager.AddAccount(accNameTxtBox.Text);
-            accNameTxtBox.Clear();
+            if (string.IsNullOrWhiteSpace(accNameTxtBox.Text))
+            {
+                MessageBoxes.DisplayErrorBox("Account name can not be empty!");
+            }
+            else if (accNameTxtBox.Text.Length > maxCharLength)
+            {
+                MessageBoxes.DisplayErrorBox($"Account name can not be longer than {maxCharLength}");
+            }
+            else
+            {
+                accountManager.AddAccount(accNameTxtBox.Text);
+                accNameTxtBox.Clear();
+            }
         }
 
         private void DeleteAccBtn_Click(object sender, RoutedEventArgs e)
@@ -41,8 +65,11 @@ namespace Csharp2_CashFlowApp
             if (accsListView.SelectedIndex != -1)
             {
                 int index = accsListView.SelectedIndex;
-                //ADD OPTION YES/NO
-                accountManager.RemoveAccount(index);
+                if (MessageBoxes.DisplayQuestion("Delete this account and all transactions?",
+                    "Delete: are you sure?"))
+                {
+                    accountManager.RemoveAccount(index);
+                }
             }
         }
 
@@ -53,7 +80,61 @@ namespace Csharp2_CashFlowApp
 
         private void AddTransactionBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+            List<string> errorMessages = ValidateTransactionInput();
+
+            if (errorMessages.Count > 0)
+            {
+                MessageBoxes.DisplayErrorBox($"Input errors:\n{errorMessages}");
+            }
+            else
+            {
+                int index = accsListView.SelectedIndex;
+
+                TransactionDTO transactionDTO = new()
+                {
+                    CategoryNameTransfer = (Enums.CategoryName)categoryNameComboBox.SelectedItem,
+                    CategoryTypeTransfer = (Enums.CategoryType)categoryComboBox.SelectedItem,
+                    DateTimeTransfer = DateTime.Now,
+                    AmountTransfer = double.Parse(amountTxtBox.Text),
+                    DescriptionTransfer = descriptionTxtBox.Text
+                };
+
+                accountManager.Accounts[index].transactionManager.AddTransaction(transactionDTO);
+                ClearTransactionInputControls();
+                Console.WriteLine("Transaction added");
+            }
+        }
+
+        private List<string> ValidateTransactionInput()
+        {
+            List<string> errorMessages = [];
+
+            if (!string.IsNullOrWhiteSpace(amountTxtBox.Text))
+            {
+                if (!double.TryParse(amountTxtBox.Text, out double result))
+                {
+                    _ = result;
+                    errorMessages.Add("Amount needs to be entered as a double");
+                }
+            }
+            else
+            {
+                errorMessages.Add("Amount can not be empty!");
+            }
+
+            if (!string.IsNullOrWhiteSpace(descriptionTxtBox.Text))
+            {
+                if (descriptionTxtBox.Text.Length > maxCharLength)
+                {
+                    errorMessages.Add($"Description can not be longer than {maxCharLength}!");
+                }
+            }
+            else
+            {
+                errorMessages.Add("Description can not be emtpy");
+            }
+
+            return errorMessages;
         }
 
         private void ToggleTransactionInputControls(object sender, RoutedEventArgs e)
@@ -67,6 +148,13 @@ namespace Csharp2_CashFlowApp
         private void ReportBtn_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void ClearTransactionInputControls()
+        {
+            categoryComboBox.SelectedIndex = 0;
+            amountTxtBox.Clear();
+            descriptionTxtBox.Clear();
         }
     }
 }

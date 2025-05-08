@@ -11,7 +11,7 @@ namespace Csharp2_CashFlowApp.Control
     public class TransactionManager
     {
         //Transaction-list
-        public ObservableCollection<Transaction> transactionEntries;
+        internal ObservableCollection<Transaction> transactionEntries;
 
         public TransactionManager()
         {
@@ -22,8 +22,8 @@ namespace Csharp2_CashFlowApp.Control
         {
             Category newCategory = new()
             {
-                Name = transactionDTO.CategoryName,
-                CategoryType = transactionDTO.CategoryType,
+                CategoryName = transactionDTO.CategoryNameTransfer,
+                CategoryType = transactionDTO.CategoryTypeTransfer
             };
 
             Transaction newTransaction = new()
@@ -31,7 +31,7 @@ namespace Csharp2_CashFlowApp.Control
                 Date = transactionDTO.DateTimeTransfer,
                 Amount = transactionDTO.AmountTransfer,
                 Category = newCategory,
-                Description = transactionDTO.Description
+                Description = transactionDTO.DescriptionTransfer
             };
 
             transactionEntries.Add(newTransaction);
