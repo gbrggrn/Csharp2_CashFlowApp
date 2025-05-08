@@ -26,5 +26,13 @@ namespace Csharp2_CashFlowApp.Model
             Car,
             Gift
         }
+
+        public enum SortBy
+        {
+            Month,
+            CategoryName,
+            CategoryType,
+            Amount
+        }
     }
 }

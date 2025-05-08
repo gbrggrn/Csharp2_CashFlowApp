@@ -94,7 +94,7 @@ namespace Csharp2_CashFlowApp
                 {
                     CategoryNameTransfer = (Enums.CategoryName)categoryNameComboBox.SelectedItem,
                     CategoryTypeTransfer = (Enums.CategoryType)categoryComboBox.SelectedItem,
-                    DateTimeTransfer = DateTime.Now,
+                    DateTimeTransfer = (DateTime)datePicker.SelectedDate!,
                     AmountTransfer = double.Parse(amountTxtBox.Text),
                     DescriptionTransfer = descriptionTxtBox.Text
                 };
@@ -108,6 +108,11 @@ namespace Csharp2_CashFlowApp
         private List<string> ValidateTransactionInput()
         {
             List<string> errorMessages = [];
+
+            if (datePicker.SelectedDate == null)
+            {
+                errorMessages.Add("You need to pick a date for the transaction");
+            }
 
             if (!string.IsNullOrWhiteSpace(amountTxtBox.Text))
             {
@@ -155,6 +160,42 @@ namespace Csharp2_CashFlowApp
             categoryComboBox.SelectedIndex = 0;
             amountTxtBox.Clear();
             descriptionTxtBox.Clear();
+        }
+
+        private void monthSortRadioBtn_Checked(object sender, RoutedEventArgs e)
+        {
+            if (accsListView.SelectedIndex != -1)
+            {
+                int index = accsListView.SelectedIndex;
+                accountManager.Accounts[index].transactionManager.SortTransactions(Enums.SortBy.Month);
+            }
+        }
+
+        private void categoryTypeSortRadioBtn_Checked(object sender, RoutedEventArgs e)
+        {
+            if (accsListView.SelectedIndex != -1)
+            {
+                int index = accsListView.SelectedIndex;
+                accountManager.Accounts[index].transactionManager.SortTransactions(Enums.SortBy.CategoryType);
+            }
+        }
+
+        private void categoryNameSortRadioBtn_Checked(object sender, RoutedEventArgs e)
+        {
+            if (accsListView.SelectedIndex != -1)
+            {
+                int index = accsListView.SelectedIndex;
+                accountManager.Accounts[index].transactionManager.SortTransactions(Enums.SortBy.CategoryName);
+            }
+        }
+
+        private void amountSortRadioBtn_Checked(object sender, RoutedEventArgs e)
+        {
+            if (accsListView.SelectedIndex != -1)
+            {
+                int index = accsListView.SelectedIndex;
+                accountManager.Accounts[index].transactionManager.SortTransactions(Enums.SortBy.Amount);
+            }
         }
     }
 }

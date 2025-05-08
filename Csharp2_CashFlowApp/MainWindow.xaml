@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Csharp2_CashFlowApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="600">
+        Title="MainWindow" Height="720" Width="600">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="275"/>
+            <RowDefinition Height="300"/>
             <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
@@ -17,13 +17,13 @@
         <!-- Sorting controls -->
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <Label x:Name="monthSortLbl" Content="Sort by month" Margin="10,0,0,0"/>
-            <RadioButton x:Name="monthSortRadioBtn" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <RadioButton x:Name="monthSortRadioBtn" VerticalAlignment="Center" Margin="0,0,10,0" Checked="monthSortRadioBtn_Checked"/>
             <Label x:Name="categoryTypeSortLbl" Content="Sort by category type"/>
-            <RadioButton x:Name="categoryTypeSortRadioBtn" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <RadioButton x:Name="categoryTypeSortRadioBtn" VerticalAlignment="Center" Margin="0,0,10,0" Checked="categoryTypeSortRadioBtn_Checked"/>
             <Label x:Name="categoryNameSortLbl" Content="Sort by category name"/>
-            <RadioButton x:Name="categoryNameSortRadioBtn" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <RadioButton x:Name="categoryNameSortRadioBtn" VerticalAlignment="Center" Margin="0,0,10,0" Checked="categoryNameSortRadioBtn_Checked"/>
             <Label x:Name="amountSortLbl" Content="Sort by amount"/>
-            <RadioButton x:Name="amountSortRadioBtn" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <RadioButton x:Name="amountSortRadioBtn" VerticalAlignment="Center" Margin="0,0,10,0" Checked="amountSortRadioBtn_Checked"/>
         </StackPanel>
         
         <!-- Transaction ListView -->
@@ -99,6 +99,7 @@
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Grid.Column="0" Orientation="Vertical" Margin="10">
+                        <Label x:Name="datePickerLbl" Content="Date"/>
                         <Label x:Name="categoryLbl" Content="Category type"/>
                         <Label x:Name="categoryNameLbl" Content="Category name"/>
                         <Label x:Name="amountLbl" Content="Amount"/>
@@ -106,10 +107,11 @@
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" Orientation="Vertical" Margin="10">
-                        <ComboBox x:Name="categoryComboBox" IsEnabled="False"/>
-                        <ComboBox x:Name="categoryNameComboBox" IsEnabled="False" Margin="0,8,0,0"/>
-                        <TextBox x:Name="amountTxtBox" Margin="0,8,0,0" IsEnabled="False"/>
-                        <TextBox x:Name="descriptionTxtBox" Margin="0,8,0,0" IsEnabled="False"/>
+                        <DatePicker x:Name="datePicker" IsEnabled="False"/>
+                        <ComboBox x:Name="categoryComboBox" Margin="0,5,0,0"  IsEnabled="False"/>
+                        <ComboBox x:Name="categoryNameComboBox" IsEnabled="False" Margin="0,5,0,0"/>
+                        <TextBox x:Name="amountTxtBox" Margin="0,5,0,0" IsEnabled="False"/>
+                        <TextBox x:Name="descriptionTxtBox" Margin="0,5,0,0" IsEnabled="False"/>
                     </StackPanel>
                 </Grid>
 
