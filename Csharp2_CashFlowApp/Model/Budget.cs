@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Csharp2_CashFlowApp.Model
 {
+    /// <summary>
+    /// Defines a Budget element.
+    /// </summary>
     public class Budget : INotifyPropertyChanged
     {
         public Enums.CategoryName CategoryName { get; set; }

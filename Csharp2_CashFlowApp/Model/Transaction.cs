@@ -8,6 +8,9 @@ using static Csharp2_CashFlowApp.Control.TransactionManager;
 
 namespace Csharp2_CashFlowApp.Model
 {
+    /// <summary>
+    /// Defines a transaction.
+    /// </summary>
     public record Transaction
     {
         public DateTime Date { get; set; }

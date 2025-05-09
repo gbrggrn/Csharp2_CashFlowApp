@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Csharp2_CashFlowApp.Model
 {
+    /// <summary>
+    /// Contains enums used within this program.
+    /// </summary>
     public class Enums
     {
         public enum CategoryType

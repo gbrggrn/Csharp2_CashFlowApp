@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Csharp2_CashFlowApp.Model
 {
+    /// <summary>
+    /// Defines a Category.
+    /// </summary>
     public record Category
     {
         public Enums.CategoryName CategoryName {  get; set; }

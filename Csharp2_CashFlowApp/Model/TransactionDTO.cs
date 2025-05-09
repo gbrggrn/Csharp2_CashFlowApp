@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Csharp2_CashFlowApp.Model
 {
+    /// <summary>
+    /// Defines a DTO of a transaction.
+    /// </summary>
     public class TransactionDTO
     {
         public Enums.CategoryName CategoryNameTransfer { get; set; }

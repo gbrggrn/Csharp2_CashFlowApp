@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Csharp2_CashFlowApp.Model
 {
+    /// <summary>
+    /// Defines a MonthReport instance.
+    /// </summary>
     internal class MonthReport
     {
         public string Month { get; set; } = string.Empty;
@@ -15,6 +18,7 @@ namespace Csharp2_CashFlowApp.Model
 
         public double NetCashFlow { get; set; } = 0.0;
 
+        //Formatting getters
         public string Top3RevenuesDisplay => string.Join(", ", Top3Revenues);
         public string Top3ExpensesDisplay => string.Join(", ", Top3Expenses);
     }
