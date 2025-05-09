@@ -48,7 +48,7 @@ namespace Csharp2_CashFlowApp.Control
 
         //Nullable variable of type Account to hold a selected account
         private Account? selectedAccount;
-        //Property that raises and event upon set if a different account is selected
+        //Property that raises an event upon set if a different account is selected
         public Account? SelectedAccount
         {
             get => selectedAccount;

@@ -23,7 +23,7 @@ namespace Csharp2_CashFlowApp.Control
         /// </summary>
         public AccountManager()
         {
-            Accounts = new ObservableCollection<Account>();
+            Accounts = [];
         }
 
         /// <summary>

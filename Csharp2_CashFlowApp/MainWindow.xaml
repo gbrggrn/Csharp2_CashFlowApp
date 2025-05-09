@@ -11,7 +11,6 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="300"/>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
@@ -29,21 +28,9 @@
             <Button Grid.Column="2" Margin="10" x:Name="loadBtn" Content="Load" Click="LoadBtn_Click"/>
         </Grid>
 
-        <!-- Sorting controls -->
-        <StackPanel Grid.Row="3" Orientation="Horizontal">
-            <Label x:Name="monthSortLbl" Content="Sort by month" Margin="10,0,0,0"/>
-            <RadioButton x:Name="monthSortRadioBtn" VerticalAlignment="Center" Margin="0,0,10,0" Checked="MonthSortRadioBtn_Checked"/>
-            <Label x:Name="categoryTypeSortLbl" Content="Sort by category type"/>
-            <RadioButton x:Name="categoryTypeSortRadioBtn" VerticalAlignment="Center" Margin="0,0,10,0" Checked="CategoryTypeSortRadioBtn_Checked"/>
-            <Label x:Name="categoryNameSortLbl" Content="Sort by category name"/>
-            <RadioButton x:Name="categoryNameSortRadioBtn" VerticalAlignment="Center" Margin="0,0,10,0" Checked="CategoryNameSortRadioBtn_Checked"/>
-            <Label x:Name="amountSortLbl" Content="Sort by amount"/>
-            <RadioButton x:Name="amountSortRadioBtn" VerticalAlignment="Center" Margin="0,0,10,0" Checked="AmountSortRadioBtn_Checked"/>
-        </StackPanel>
-        
         <!-- Transaction ListView -->
         <Label Grid.Row="2" Content="Transactions" FontSize="14" Margin="10,0,0,0"/>
-        <ListView Grid.Row="4" Margin="10"
+        <ListView Grid.Row="3" Margin="10"
                     x:Name="transactionListView"
                     ItemsSource="{Binding ObservableTransactions}">
             <ListView.View>
@@ -147,7 +134,7 @@
         </Grid>
         
         <!-- Report/Optional features -->
-        <Grid Grid.Row="5">
+        <Grid Grid.Row="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -155,7 +142,7 @@
             </Grid.ColumnDefinitions>
 
             <Button Grid.Column="0" x:Name="reportBtn" Content="Manage reports" Margin="10" Click="ReportBtn_Click"/>
-            <Button Grid.Column="1" x:Name="setLimitsMeBtn" Content="Set account limits" Margin="10" Click="SetLimitsBtn_Click"/>
+            <Button Grid.Column="1" x:Name="setLimitsMeBtn" Content="Set category limits" Margin="10" Click="SetLimitsBtn_Click"/>
             <Button Grid.Column="2" x:Name="searchBtn" Content="Search transaction" Margin="10" Click="SearchBtn_Click"/>
         </Grid>
     </Grid>

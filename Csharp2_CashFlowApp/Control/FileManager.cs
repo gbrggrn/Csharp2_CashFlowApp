@@ -49,11 +49,6 @@ namespace Csharp2_CashFlowApp.Control
                     $"{ex.Message}");
             }
 
-            foreach (var account in accountManager.Accounts)
-            {
-                account.RewireEvents();
-            }
-
             return accountManager;
         }
     }

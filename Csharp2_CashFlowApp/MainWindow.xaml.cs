@@ -22,23 +22,45 @@ namespace Csharp2_CashFlowApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        //Variables
         private readonly AccountManager accountManager;
         private readonly AccountTransactionObserver accountTransactionObserver;
         private readonly FileManager fileManager;
+        private readonly BudgetManager budgetManager;
+        private readonly BudgetObserver budgetObserver;
 
+        //Constants
         private const int maxCharLength = 20;
 
+        /// <summary>
+        /// Constructor initializes instance variables, populates UI elements and sets subscription.
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
             fileManager = new();
             accountManager = new();
+            budgetManager = new();
+            budgetObserver = new(this, accountManager, budgetManager);
             accountTransactionObserver = new(accountManager);
             DataContext = accountTransactionObserver;
             accsListView.SelectionChanged += ToggleTransactionInputControls;
             LoadCategories();
         }
+
+        /// <summary>
+        /// Displays errormessage upon exceeding of budget.
+        /// </summary>
+        /// <param name="message">Message to display</param>
+        /// <param name="title">Title of the messagebox</param>
+        public void BudgetExceeded(string message, string title)
+        {
+            MessageBoxes.DisplayInfoBox(message, title);
+        }
         
+        /// <summary>
+        /// Loads category types and names into respective comboboxes
+        /// </summary>
         private void LoadCategories()
         {
             categoryComboBox.ItemsSource = Enum.GetValues(typeof(Enums.CategoryType));
@@ -48,6 +70,11 @@ namespace Csharp2_CashFlowApp
             categoryNameComboBox.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Reacts to add button click. Adds an account to the account collection.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddAccBtn_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(accNameTxtBox.Text))
@@ -65,6 +92,11 @@ namespace Csharp2_CashFlowApp
             }
         }
 
+        /// <summary>
+        /// Reacts to delete button click. Deletes an account from the account collection.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DeleteAccBtn_Click(object sender, RoutedEventArgs e)
         {
             if (accsListView.SelectedIndex != -1)
@@ -80,9 +112,14 @@ namespace Csharp2_CashFlowApp
 
         private void EditAccBtn_Click(object sender, RoutedEventArgs e)
         {
-            //Add change
+            //Not implemented
         }
 
+        /// <summary>
+        /// Adds a transaction to the transaction collection in the transactionmanager of an account.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddTransactionBtn_Click(object sender, RoutedEventArgs e)
         {
             List<string> errorMessages = ValidateTransactionInput();
@@ -106,15 +143,18 @@ namespace Csharp2_CashFlowApp
 
                 accountManager.Accounts[index].TransactionManager.AddTransaction(transactionDTO);
                 ClearTransactionInputControls();
-                Console.WriteLine("Transaction added");
             }
         }
 
+        /// <summary>
+        /// Validates transaction input.
+        /// </summary>
+        /// <returns>A list of errormessages</returns>
         private List<string> ValidateTransactionInput()
         {
             List<string> errorMessages = [];
 
-            if (datePicker.SelectedDate == null)
+            if (!datePicker.SelectedDate.HasValue)
             {
                 errorMessages.Add("You need to pick a date for the transaction");
             }
@@ -147,6 +187,11 @@ namespace Csharp2_CashFlowApp
             return errorMessages;
         }
 
+        /// <summary>
+        /// Toggles input controls upon account selection.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ToggleTransactionInputControls(object sender, RoutedEventArgs e)
         {
             datePicker.IsEnabled = true;
@@ -157,6 +202,11 @@ namespace Csharp2_CashFlowApp
             addTransactionBtn.IsEnabled = true;
         }
 
+        /// <summary>
+        /// Opens the report-window.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ReportBtn_Click(object sender, RoutedEventArgs e)
         {
             if (transactionListView.Items.Count > 0)
@@ -172,6 +222,9 @@ namespace Csharp2_CashFlowApp
             }
         }
 
+        /// <summary>
+        /// Clears transaction input controls.
+        /// </summary>
         private void ClearTransactionInputControls()
         {
             categoryComboBox.SelectedIndex = 0;
@@ -179,42 +232,11 @@ namespace Csharp2_CashFlowApp
             descriptionTxtBox.Clear();
         }
 
-        private void MonthSortRadioBtn_Checked(object sender, RoutedEventArgs e)
-        {
-            if (accsListView.SelectedIndex != -1)
-            {
-                int index = accsListView.SelectedIndex;
-                accountManager.Accounts[index].TransactionManager.SortTransactions(Enums.SortBy.Month);
-            }
-        }
-
-        private void CategoryTypeSortRadioBtn_Checked(object sender, RoutedEventArgs e)
-        {
-            if (accsListView.SelectedIndex != -1)
-            {
-                int index = accsListView.SelectedIndex;
-                accountManager.Accounts[index].TransactionManager.SortTransactions(Enums.SortBy.CategoryType);
-            }
-        }
-
-        private void CategoryNameSortRadioBtn_Checked(object sender, RoutedEventArgs e)
-        {
-            if (accsListView.SelectedIndex != -1)
-            {
-                int index = accsListView.SelectedIndex;
-                accountManager.Accounts[index].TransactionManager.SortTransactions(Enums.SortBy.CategoryName);
-            }
-        }
-
-        private void AmountSortRadioBtn_Checked(object sender, RoutedEventArgs e)
-        {
-            if (accsListView.SelectedIndex != -1)
-            {
-                int index = accsListView.SelectedIndex;
-                accountManager.Accounts[index].TransactionManager.SortTransactions(Enums.SortBy.Amount);
-            }
-        }
-
+        /// <summary>
+        /// Prompts the user for choice of closing the app.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBoxes.DisplayQuestion("Do you want to exit the application?\n" +
@@ -224,6 +246,11 @@ namespace Csharp2_CashFlowApp
             }
         }
 
+        /// <summary>
+        /// Saves the currently added accounts + transactions in json format.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog save = new()
@@ -246,6 +273,11 @@ namespace Csharp2_CashFlowApp
             }
         }
 
+        /// <summary>
+        /// Loads content from a json file.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LoadBtn_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog open = new()
@@ -257,16 +289,28 @@ namespace Csharp2_CashFlowApp
             {
                 try
                 {
+                    //Deserialize
                     var newAccountManager = fileManager.Deserialize(open.FileName);
 
+                    //Clear UI list
                     accountManager.Accounts.Clear();
 
+                    //Add deserialized accounts to main accountManager
                     foreach (var account in newAccountManager.Accounts)
                     {
+                        //Rewire events for each account
+                        account.RewireEvents();
                         accountManager.Accounts.Add(account);
                     }
 
+                    //Rewire budget observation
+                    budgetObserver.RewireSubsUponLoad();
+                    //Evaluate new transactions against budgets
+                    budgetObserver.EvaluateAllTransactions();
+
+                    //Clear main UI observed collection
                     accountTransactionObserver.ObservableAccounts.Clear();
+                    //Re-add deserialized accounts
                     foreach (var account in newAccountManager.Accounts)
                     {
                         accountTransactionObserver.ObservableAccounts.Add(account);
@@ -279,15 +323,31 @@ namespace Csharp2_CashFlowApp
             }
         }
 
+        /// <summary>
+        /// Opens the set limits window.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SetLimitsBtn_Click(object sender, RoutedEventArgs e)
         {
+            SetLimitsWindow setLimitsWindow = new(budgetManager);
 
+            setLimitsWindow.ShowDialog();
+
+            //Evaluate existing transactions upon close
+            budgetObserver.EvaluateAllTransactions();
         }
 
+        /// <summary>
+        /// Opens the search window.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SearchBtn_Click(object sender, RoutedEventArgs e)
         {
             ObservableCollection<Transaction> allTransactions = [];
 
+            //Copy all transactions
             foreach (Account account in accountManager.Accounts)
             {
                 foreach (Transaction transaction in account.TransactionManager.TransactionEntries)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace Csharp2_CashFlowApp.Control
         {
             TransactionEntries = [];
         }
-        
+
         internal void AddTransaction(TransactionDTO transactionDTO)
         {
             Category newCategory = new()
@@ -36,24 +37,6 @@ namespace Csharp2_CashFlowApp.Control
             };
 
             TransactionEntries.Add(newTransaction);
-        }
-
-        internal void SortTransactions(Enums.SortBy sortByIn)
-        {
-            //Instantiate TransactionSorter with sorting instruction
-            TransactionSorter transactionSorter = new(sortByIn);
-
-            //Clear transactionEntries (that is observed by the UI)
-            TransactionEntries.Clear();
-
-            //Sort the transactions to a list
-            List<Transaction> sortedTransactions = TransactionEntries.OrderBy(transaction => transaction, transactionSorter).ToList();
-
-            //Add the transactions to transactionEntries-collection
-            foreach (Transaction transaction in sortedTransactions)
-            {
-                TransactionEntries.Add(transaction);
-            }
         }
     }
 }
