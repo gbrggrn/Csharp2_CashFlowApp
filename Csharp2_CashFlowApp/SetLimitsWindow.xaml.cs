@@ -23,8 +23,13 @@ namespace Csharp2_CashFlowApp
     /// </summary>
     public partial class SetLimitsWindow : Window
     {
+        //Variables
         private readonly BudgetManager budgetManager;
 
+        /// <summary>
+        /// Constructor initializes, sets subscription and calls initial budget update.
+        /// </summary>
+        /// <param name="budgetManagerIn">The main budgetManager</param>
         public SetLimitsWindow(BudgetManager budgetManagerIn)
         {
             InitializeComponent();
@@ -35,12 +40,21 @@ namespace Csharp2_CashFlowApp
             budgetManager.UpdateBudgets();
         }
 
+        /// <summary>
+        /// Populates the month combobox.
+        /// </summary>
         private void LoadMonths()
         {
             monthComboBox.ItemsSource = Enum.GetValues(typeof(Enums.Months));
             monthComboBox.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Reacts to clear button click.
+        /// Clears the selected budget.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClearBtn_Click(object sender, RoutedEventArgs e)
         {
             if (budgetListView.SelectedIndex != -1)
@@ -51,6 +65,11 @@ namespace Csharp2_CashFlowApp
             }
         }
 
+        /// <summary>
+        /// Reacts to save button click. Saves the entered budget to the selected category.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             if (budgetListView.SelectedIndex != -1)
@@ -72,6 +91,11 @@ namespace Csharp2_CashFlowApp
             }
         }
 
+        /// <summary>
+        /// Displays the current budget in the input textbox upon selection.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DisplayBudgetOnSelection(object sender, SelectionChangedEventArgs e)
         {
             int index = budgetListView.SelectedIndex;
@@ -85,6 +109,11 @@ namespace Csharp2_CashFlowApp
             budgetTxtBox.Text = budgetManager.CurrentBudgets[index].CategoryBudget.ToString();
         }
 
+        /// <summary>
+        /// Reacts to exit button click. Closes window depending on choice.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBoxes.DisplayQuestion("Return to main window?", "Return?"))

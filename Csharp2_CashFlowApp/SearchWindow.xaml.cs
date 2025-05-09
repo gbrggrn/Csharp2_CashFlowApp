@@ -25,9 +25,14 @@ namespace Csharp2_CashFlowApp
     /// </summary>
     public partial class SearchWindow : Window
     {
+        //Properties
         public ObservableCollection<Transaction> SearchableTransactions { get; }
         public ObservableCollection<Transaction> SearchResults { get; }
 
+        /// <summary>
+        /// Constructor initializes and loads UI elements.
+        /// </summary>
+        /// <param name="searchableTransactionsIn"></param>
         public SearchWindow(ObservableCollection<Transaction> searchableTransactionsIn)
         {
             InitializeComponent();
@@ -38,6 +43,10 @@ namespace Csharp2_CashFlowApp
             LoadSearchableTransactions(searchableTransactionsIn);
         }
 
+        /// <summary>
+        /// Loads the searchable transactions.
+        /// </summary>
+        /// <param name="searchableTransactions">A collection of all transactions</param>
         private void LoadSearchableTransactions(ObservableCollection<Transaction> searchableTransactions)
         {
             foreach (Transaction transaction in searchableTransactions)
@@ -47,12 +56,20 @@ namespace Csharp2_CashFlowApp
             }
         }
 
+        /// <summary>
+        /// Loads comboboxes values.
+        /// </summary>
         private void LoadComboBoxes()
         {
             monthComboBox.ItemsSource = Enum.GetValues(typeof(Enums.Months));
             categoryNameComboBox.ItemsSource = Enum.GetValues(typeof(Enums.CategoryName));
         }
 
+        /// <summary>
+        /// Reacts to exit button click. Closes window depending on choice.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBoxes.DisplayQuestion("Do you want to return to main window?", "Return?"))
@@ -61,6 +78,12 @@ namespace Csharp2_CashFlowApp
             }
         }
 
+        /// <summary>
+        /// Clears all search parameters.
+        /// Repopulates the SearchResults collection so that all transactions are now visible again.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClearBtn_Click(object sender, RoutedEventArgs e)
         {
             searchTxtBox.Clear();
@@ -79,6 +102,14 @@ namespace Csharp2_CashFlowApp
             }
         }
 
+        /// <summary>
+        /// Reacts to search button click.
+        /// Checks what parameters are applied to the search and evaluates transactions on those.
+        /// A boolean flag "match" is set to false if transaction does not match.
+        /// If all statements evaluate true: adds the transaction to SearchResults for display.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SearchBtn_Click(object sender, RoutedEventArgs e)
         {
             string searchTerm = searchTxtBox.Text;

@@ -16,6 +16,7 @@ namespace Csharp2_CashFlowApp.Control
         public ReportGenerator(AccountManager accountManagerIn, int accountIndexIn)
         {
             accountManager = accountManagerIn;
+            accountIndex = accountIndexIn;
         }
 
         internal Dictionary<DateTime, (double Revenue, double Expense, double CashFlow)> GenerateFullYearData()

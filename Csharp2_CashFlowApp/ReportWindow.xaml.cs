@@ -21,10 +21,16 @@ namespace Csharp2_CashFlowApp
     /// </summary>
     public partial class ReportWindow : Window
     {
+        //Variables
         private AccountManager accountManager;
         private ReportGenerator reportGenerator;
         private int accountIndex;
 
+        /// <summary>
+        /// Constructor initializes instance variables.
+        /// </summary>
+        /// <param name="accountManagerIn">The main accountManager</param>
+        /// <param name="accountIndexIn">Index of the account to generate reports from</param>
         public ReportWindow(AccountManager accountManagerIn, int accountIndexIn)
         {
             InitializeComponent();
@@ -33,6 +39,11 @@ namespace Csharp2_CashFlowApp
             reportGenerator = new(accountManager, accountIndex);
         }
 
+        /// <summary>
+        /// Reacts to exit button click. Closes window depending on choice
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBoxes.DisplayQuestion("Return to main window?", "Return?"))
@@ -41,6 +52,14 @@ namespace Csharp2_CashFlowApp
             }
         }
 
+        /// <summary>
+        /// Retrieves data for the full year report.
+        /// Formats the report view to accept the data.
+        /// Formats the rows to be viewed.
+        /// Sets itemssource of the listview.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FullYearBtn_Click(object sender, RoutedEventArgs e)
         {
             var fullYearReportData = reportGenerator.GenerateFullYearData();
@@ -86,6 +105,13 @@ namespace Csharp2_CashFlowApp
             reportListView.ItemsSource = reportRows;
         }
 
+        /// <summary>
+        /// Retrieves the monthly summary data.
+        /// Formats the report view to accept the data.
+        /// Sets the itemssource for the listview.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DetailMonthBtn_Click(object sender, RoutedEventArgs e)
         {
             var monthlySummary = reportGenerator.GenerateMonthlyData();
