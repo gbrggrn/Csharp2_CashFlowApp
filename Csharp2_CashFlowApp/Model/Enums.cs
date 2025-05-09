@@ -24,7 +24,13 @@ namespace Csharp2_CashFlowApp.Model
             Bribe,
             Clothes,
             Car,
-            Gift
+            Gift,
+            Salary,
+            Bonus,
+            InvestmentReturns,
+            Freelance,
+            RentalIncome,
+            GovernmentBenefits
         }
 
         public enum SortBy

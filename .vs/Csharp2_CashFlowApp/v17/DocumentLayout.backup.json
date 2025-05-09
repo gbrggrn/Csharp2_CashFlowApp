@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\gusta\\source\\repos\\C#\\MAU_C#\\C#2\\Csharp2_CashFlowApp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{16DEAF81-5A62-4576-8B46-BE5808B76E35}|Csharp2_CashFlowApp\\Csharp2_CashFlowApp.csproj|c:\\users\\gusta\\source\\repos\\c#\\mau_c#\\c#2\\csharp2_cashflowapp\\csharp2_cashflowapp\\control\\accounttransactionobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16DEAF81-5A62-4576-8B46-BE5808B76E35}|Csharp2_CashFlowApp\\Csharp2_CashFlowApp.csproj|solutionrelative:csharp2_cashflowapp\\control\\accounttransactionobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16DEAF81-5A62-4576-8B46-BE5808B76E35}|Csharp2_CashFlowApp\\Csharp2_CashFlowApp.csproj|c:\\users\\gusta\\source\\repos\\c#\\mau_c#\\c#2\\csharp2_cashflowapp\\csharp2_cashflowapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16DEAF81-5A62-4576-8B46-BE5808B76E35}|Csharp2_CashFlowApp\\Csharp2_CashFlowApp.csproj|solutionrelative:csharp2_cashflowapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{16DEAF81-5A62-4576-8B46-BE5808B76E35}|Csharp2_CashFlowApp\\Csharp2_CashFlowApp.csproj|c:\\users\\gusta\\source\\repos\\c#\\mau_c#\\c#2\\csharp2_cashflowapp\\csharp2_cashflowapp\\searchwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{16DEAF81-5A62-4576-8B46-BE5808B76E35}|Csharp2_CashFlowApp\\Csharp2_CashFlowApp.csproj|solutionrelative:csharp2_cashflowapp\\searchwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,14 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{16DEAF81-5A62-4576-8B46-BE5808B76E35}|Csharp2_CashFlowApp\\Csharp2_CashFlowApp.csproj|c:\\users\\gusta\\source\\repos\\c#\\mau_c#\\c#2\\csharp2_cashflowapp\\csharp2_cashflowapp\\model\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{16DEAF81-5A62-4576-8B46-BE5808B76E35}|Csharp2_CashFlowApp\\Csharp2_CashFlowApp.csproj|solutionrelative:csharp2_cashflowapp\\model\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{16DEAF81-5A62-4576-8B46-BE5808B76E35}|Csharp2_CashFlowApp\\Csharp2_CashFlowApp.csproj|c:\\users\\gusta\\source\\repos\\c#\\mau_c#\\c#2\\csharp2_cashflowapp\\csharp2_cashflowapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{16DEAF81-5A62-4576-8B46-BE5808B76E35}|Csharp2_CashFlowApp\\Csharp2_CashFlowApp.csproj|solutionrelative:csharp2_cashflowapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{16DEAF81-5A62-4576-8B46-BE5808B76E35}|Csharp2_CashFlowApp\\Csharp2_CashFlowApp.csproj|c:\\users\\gusta\\source\\repos\\c#\\mau_c#\\c#2\\csharp2_cashflowapp\\csharp2_cashflowapp\\control\\accounttransactionobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{16DEAF81-5A62-4576-8B46-BE5808B76E35}|Csharp2_CashFlowApp\\Csharp2_CashFlowApp.csproj|solutionrelative:csharp2_cashflowapp\\control\\accounttransactionobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{16DEAF81-5A62-4576-8B46-BE5808B76E35}|Csharp2_CashFlowApp\\Csharp2_CashFlowApp.csproj|c:\\users\\gusta\\source\\repos\\c#\\mau_c#\\c#2\\csharp2_cashflowapp\\csharp2_cashflowapp\\setlimitswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -62,24 +62,62 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "SearchWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\C#\\MAU_C#\\C#2\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\SearchWindow.xaml.cs",
               "RelativeDocumentMoniker": "Csharp2_CashFlowApp\\SearchWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\gusta\\source\\repos\\C#\\MAU_C#\\C#2\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\SearchWindow.xaml.cs*",
-              "RelativeToolTip": "Csharp2_CashFlowApp\\SearchWindow.xaml.cs*",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAIwGoAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\gusta\\source\\repos\\C#\\MAU_C#\\C#2\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\SearchWindow.xaml.cs",
+              "RelativeToolTip": "Csharp2_CashFlowApp\\SearchWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-09T12:57:28.572Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
+              "Title": "SearchWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\C#\\MAU_C#\\C#2\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\SearchWindow.xaml",
+              "RelativeDocumentMoniker": "Csharp2_CashFlowApp\\SearchWindow.xaml",
+              "ToolTip": "C:\\Users\\gusta\\source\\repos\\C#\\MAU_C#\\C#2\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\SearchWindow.xaml",
+              "RelativeToolTip": "Csharp2_CashFlowApp\\SearchWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-09T12:34:18.478Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\C#\\MAU_C#\\C#2\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Csharp2_CashFlowApp\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\gusta\\source\\repos\\C#\\MAU_C#\\C#2\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\MainWindow.xaml.cs",
+              "RelativeToolTip": "Csharp2_CashFlowApp\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAIkAAAAAAAAAAAD4v7UAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T13:20:39.054Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AccountTransactionObserver.cs",
+              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\C#\\MAU_C#\\C#2\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\Control\\AccountTransactionObserver.cs",
+              "RelativeDocumentMoniker": "Csharp2_CashFlowApp\\Control\\AccountTransactionObserver.cs",
+              "ToolTip": "C:\\Users\\gusta\\source\\repos\\C#\\MAU_C#\\C#2\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\Control\\AccountTransactionObserver.cs",
+              "RelativeToolTip": "Csharp2_CashFlowApp\\Control\\AccountTransactionObserver.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwDYAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-09T07:57:23.535Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\C#\\MAU_C#\\C#2\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\MainWindow.xaml",
               "RelativeDocumentMoniker": "Csharp2_CashFlowApp\\MainWindow.xaml",
@@ -92,31 +130,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "AccountTransactionObserver.cs",
-              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\C#\\MAU_C#\\C#2\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\Control\\AccountTransactionObserver.cs",
-              "RelativeDocumentMoniker": "Csharp2_CashFlowApp\\Control\\AccountTransactionObserver.cs",
-              "ToolTip": "C:\\Users\\gusta\\source\\repos\\C#\\MAU_C#\\C#2\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\Control\\AccountTransactionObserver.cs",
-              "RelativeToolTip": "Csharp2_CashFlowApp\\Control\\AccountTransactionObserver.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T07:57:23.535Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SearchWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\C#\\MAU_C#\\C#2\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\SearchWindow.xaml",
-              "RelativeDocumentMoniker": "Csharp2_CashFlowApp\\SearchWindow.xaml",
-              "ToolTip": "C:\\Users\\gusta\\source\\repos\\C#\\MAU_C#\\C#2\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\SearchWindow.xaml",
-              "RelativeToolTip": "Csharp2_CashFlowApp\\SearchWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-09T12:34:18.478Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "Enums.cs",
               "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\C#\\MAU_C#\\C#2\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\Model\\Enums.cs",
               "RelativeDocumentMoniker": "Csharp2_CashFlowApp\\Model\\Enums.cs",
@@ -129,19 +142,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\C#\\MAU_C#\\C#2\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "Csharp2_CashFlowApp\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\gusta\\source\\repos\\C#\\MAU_C#\\C#2\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\MainWindow.xaml.cs",
-              "RelativeToolTip": "Csharp2_CashFlowApp\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAAQBAAAAAAAAAAAQwCwBAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T13:20:39.054Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 6,
               "Title": "SetLimitsWindow.xaml",
               "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\C#\\MAU_C#\\C#2\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\SetLimitsWindow.xaml",
@@ -149,7 +149,8 @@
               "ToolTip": "C:\\Users\\gusta\\source\\repos\\C#\\MAU_C#\\C#2\\Csharp2_CashFlowApp\\Csharp2_CashFlowApp\\SetLimitsWindow.xaml",
               "RelativeToolTip": "Csharp2_CashFlowApp\\SetLimitsWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-09T12:34:02.921Z"
+              "WhenOpened": "2025-05-09T12:34:02.921Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
