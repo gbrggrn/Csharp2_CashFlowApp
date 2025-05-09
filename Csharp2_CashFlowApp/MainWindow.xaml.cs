@@ -20,7 +20,7 @@ namespace Csharp2_CashFlowApp
     public partial class MainWindow : Window
     {
         private readonly AccountManager accountManager;
-        private readonly DataContextSwitchYard dataContextSwitchYard;
+        private readonly AccountTransactionObserver dataContextSwitchYard;
 
         private const int maxCharLength = 20;
 

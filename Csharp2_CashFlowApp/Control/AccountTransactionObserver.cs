@@ -14,7 +14,7 @@ namespace Csharp2_CashFlowApp.Control
     /// Basically a small-ish ViewModel.
     /// Responsible for switches between instances of TransactionManagers based on account-selection.
     /// </summary>
-    public class DataContextSwitchYard : INotifyPropertyChanged
+    public class AccountTransactionObserver : INotifyPropertyChanged
     {
         //Observes the Accounts collection in AccountManager
         public ObservableCollection<Account> ObservableAccounts { get; }
@@ -42,9 +42,8 @@ namespace Csharp2_CashFlowApp.Control
         /// the accounts-collection from AccountManager.
         /// </summary>
         /// <param name="accountManagerIn"></param>
-        public DataContextSwitchYard(AccountManager accountManagerIn)
+        public AccountTransactionObserver(AccountManager accountManagerIn)
         {
-            Console.WriteLine("DataContextSwitchYard initialized");
             ObservableAccounts = accountManagerIn.Accounts;
         }
 
@@ -59,8 +58,6 @@ namespace Csharp2_CashFlowApp.Control
                 if (selectedAccount != value)
                 {
                     selectedAccount = value;
-                    Console.WriteLine("SelectedAccountChanged");
-                    //OnPropertyChanged(nameof(SelectedAccount));
                     OnPropertyChanged(nameof(ObservableTransactions));
                 }
             }

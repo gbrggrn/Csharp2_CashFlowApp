@@ -43,7 +43,7 @@ namespace Csharp2_CashFlowApp
 
         private void FullYearBtn_Click(object sender, RoutedEventArgs e)
         {
-            var fullYearReportData = reportGenerator.GenerateFullYearReport();
+            var fullYearReportData = reportGenerator.GenerateFullYearData();
 
             reportGridView.Columns.Clear();
 
@@ -88,7 +88,39 @@ namespace Csharp2_CashFlowApp
 
         private void DetailMonthBtn_Click(object sender, RoutedEventArgs e)
         {
+            var monthlySummary = reportGenerator.GenerateMonthlyData();
 
+            reportGridView.Columns.Clear();
+
+            reportGridView.Columns.Add(new GridViewColumn
+            {
+                Header = "Month",
+                Width = 100,
+                DisplayMemberBinding = new Binding("Month")
+            });
+
+            reportGridView.Columns.Add(new GridViewColumn
+            {
+                Header = "Top 3 expenses",
+                Width = 100,
+                DisplayMemberBinding = new Binding("Top3ExpensesDisplay")
+            });
+
+            reportGridView.Columns.Add(new GridViewColumn
+            {
+                Header = "Top 3 revenues",
+                Width = 100,
+                DisplayMemberBinding = new Binding("Top3RevenuesDisplay")
+            });
+
+            reportGridView.Columns.Add(new GridViewColumn
+            {
+                Header = "Cash flow",
+                Width = 100,
+                DisplayMemberBinding = new Binding("NetCashFlow")
+            });
+
+            reportListView.ItemsSource = monthlySummary;
         }
     }
 }
