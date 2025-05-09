@@ -20,7 +20,7 @@ namespace Csharp2_CashFlowApp.Control
 
         internal Dictionary<DateTime, (double Revenue, double Expense, double CashFlow)> GenerateFullYearData()
         {
-            List<Transaction> transactions = accountManager.Accounts[accountIndex].transactionManager.transactionEntries.ToList();
+            List<Transaction> transactions = accountManager.Accounts[accountIndex].TransactionManager.TransactionEntries.ToList();
 
             Dictionary<DateTime, (double Revenue, double Expense, double CashFlow)> monthlySummary = [];
 
@@ -61,7 +61,7 @@ namespace Csharp2_CashFlowApp.Control
         internal List<MonthReport> GenerateMonthlyData()
         {
             //Retrieve transactions for the account
-            List<Transaction> transactions = accountManager.Accounts[accountIndex].transactionManager.transactionEntries.ToList();
+            List<Transaction> transactions = accountManager.Accounts[accountIndex].TransactionManager.TransactionEntries.ToList();
             Dictionary<DateTime, (Dictionary<string, double> Revenues, Dictionary<string, double> Expenses, double NetCashFlow)> sortingStructure = [];
 
             foreach (Transaction transaction in transactions)

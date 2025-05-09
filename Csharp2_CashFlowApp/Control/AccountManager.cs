@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Csharp2_CashFlowApp.Model;
 
 namespace Csharp2_CashFlowApp.Control
 {
+    [Serializable]
     /// <summary>
     /// Responsible for managing the Accounts-collection.
     /// </summary>
     public class AccountManager
     {
         //Properties
-        internal ObservableCollection<Account> Accounts { get; }
+        public ObservableCollection<Account> Accounts { get; set; }
 
         /// <summary>
         /// Constructor initializes the collection.

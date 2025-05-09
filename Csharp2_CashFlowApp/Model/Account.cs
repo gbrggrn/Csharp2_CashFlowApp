@@ -8,12 +8,13 @@ using Csharp2_CashFlowApp.Control;
 
 namespace Csharp2_CashFlowApp.Model
 {
+    [Serializable]
     public class Account : INotifyPropertyChanged
     {
         //Variables
-        public string name;
+        public string name = string.Empty;
         private double balance;
-        public TransactionManager transactionManager;
+        public TransactionManager TransactionManager { get; set; }
 
         //Events
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -47,10 +48,10 @@ namespace Csharp2_CashFlowApp.Model
 
         public Account()
         {
-            transactionManager = new();
+            TransactionManager = new();
             //Observe changes to transaction collection, upon change:
             //Pass sender/args to eventhandler and call UpdateBalance()
-            transactionManager.transactionEntries.CollectionChanged += (s, e) => UpdateBalance();
+            TransactionManager.TransactionEntries.CollectionChanged += (s, e) => UpdateBalance();
         }
 
         private void UpdateBalance()
@@ -58,7 +59,7 @@ namespace Csharp2_CashFlowApp.Model
             double totalRevenue = 0.0;
             double totalExpenses = 0.0;
 
-            foreach (Transaction transaction in transactionManager.transactionEntries)
+            foreach (Transaction transaction in TransactionManager.TransactionEntries)
             {
                 if (transaction.Category?.CategoryType == Enums.CategoryType.Revenue)
                 {
@@ -71,6 +72,15 @@ namespace Csharp2_CashFlowApp.Model
             }
 
             Balance = totalRevenue - totalExpenses;
+        }
+
+        /// <summary>
+        /// Constructor apparently does not run when deserializing json so
+        /// this method rewires the collectionchanged event.
+        /// </summary>
+        public void RewireEvents()
+        {
+            TransactionManager.TransactionEntries.CollectionChanged += (s, e) => UpdateBalance();
         }
 
         public void OnPropertyChanged(string propertyName)

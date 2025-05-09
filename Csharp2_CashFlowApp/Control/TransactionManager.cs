@@ -8,14 +8,15 @@ using Csharp2_CashFlowApp.Model;
 
 namespace Csharp2_CashFlowApp.Control
 {
+    [Serializable]
     public class TransactionManager
     {
         //Transaction-collection
-        internal ObservableCollection<Transaction> transactionEntries;
+        public ObservableCollection<Transaction> TransactionEntries { get; set; }
 
         public TransactionManager()
         {
-            transactionEntries = [];
+            TransactionEntries = [];
         }
         
         internal void AddTransaction(TransactionDTO transactionDTO)
@@ -34,7 +35,7 @@ namespace Csharp2_CashFlowApp.Control
                 Description = transactionDTO.DescriptionTransfer
             };
 
-            transactionEntries.Add(newTransaction);
+            TransactionEntries.Add(newTransaction);
         }
 
         internal void SortTransactions(Enums.SortBy sortByIn)
@@ -43,15 +44,15 @@ namespace Csharp2_CashFlowApp.Control
             TransactionSorter transactionSorter = new(sortByIn);
 
             //Clear transactionEntries (that is observed by the UI)
-            transactionEntries.Clear();
+            TransactionEntries.Clear();
 
             //Sort the transactions to a list
-            List<Transaction> sortedTransactions = transactionEntries.OrderBy(transaction => transaction, transactionSorter).ToList();
+            List<Transaction> sortedTransactions = TransactionEntries.OrderBy(transaction => transaction, transactionSorter).ToList();
 
             //Add the transactions to transactionEntries-collection
             foreach (Transaction transaction in sortedTransactions)
             {
-                transactionEntries.Add(transaction);
+                TransactionEntries.Add(transaction);
             }
         }
     }

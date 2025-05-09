@@ -24,9 +24,9 @@ namespace Csharp2_CashFlowApp.Control
             get
             {
                 //Get the transactionmanager of the selected account
-                if (SelectedAccount?.transactionManager.transactionEntries != null)
+                if (SelectedAccount?.TransactionManager.TransactionEntries != null)
                 {
-                    return SelectedAccount?.transactionManager.transactionEntries!;
+                    return SelectedAccount?.TransactionManager.TransactionEntries!;
                 }
                 else
                 {

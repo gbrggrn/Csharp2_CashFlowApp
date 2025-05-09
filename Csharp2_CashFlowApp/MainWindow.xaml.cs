@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
+using System.Reflection.Metadata;
 
 namespace Csharp2_CashFlowApp
 {
@@ -19,17 +21,19 @@ namespace Csharp2_CashFlowApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly AccountManager accountManager;
-        private readonly AccountTransactionObserver dataContextSwitchYard;
+        private AccountManager accountManager;
+        private readonly AccountTransactionObserver accountTransactionObserver;
+        private readonly FileManager fileManager;
 
         private const int maxCharLength = 20;
 
         public MainWindow()
         {
             InitializeComponent();
+            fileManager = new();
             accountManager = new();
-            dataContextSwitchYard = new(accountManager);
-            DataContext = dataContextSwitchYard;
+            accountTransactionObserver = new(accountManager);
+            DataContext = accountTransactionObserver;
             accsListView.SelectionChanged += ToggleTransactionInputControls;
             LoadCategories();
         }
@@ -99,7 +103,7 @@ namespace Csharp2_CashFlowApp
                     DescriptionTransfer = descriptionTxtBox.Text
                 };
 
-                accountManager.Accounts[index].transactionManager.AddTransaction(transactionDTO);
+                accountManager.Accounts[index].TransactionManager.AddTransaction(transactionDTO);
                 ClearTransactionInputControls();
                 Console.WriteLine("Transaction added");
             }
@@ -179,7 +183,7 @@ namespace Csharp2_CashFlowApp
             if (accsListView.SelectedIndex != -1)
             {
                 int index = accsListView.SelectedIndex;
-                accountManager.Accounts[index].transactionManager.SortTransactions(Enums.SortBy.Month);
+                accountManager.Accounts[index].TransactionManager.SortTransactions(Enums.SortBy.Month);
             }
         }
 
@@ -188,7 +192,7 @@ namespace Csharp2_CashFlowApp
             if (accsListView.SelectedIndex != -1)
             {
                 int index = accsListView.SelectedIndex;
-                accountManager.Accounts[index].transactionManager.SortTransactions(Enums.SortBy.CategoryType);
+                accountManager.Accounts[index].TransactionManager.SortTransactions(Enums.SortBy.CategoryType);
             }
         }
 
@@ -197,7 +201,7 @@ namespace Csharp2_CashFlowApp
             if (accsListView.SelectedIndex != -1)
             {
                 int index = accsListView.SelectedIndex;
-                accountManager.Accounts[index].transactionManager.SortTransactions(Enums.SortBy.CategoryName);
+                accountManager.Accounts[index].TransactionManager.SortTransactions(Enums.SortBy.CategoryName);
             }
         }
 
@@ -206,8 +210,82 @@ namespace Csharp2_CashFlowApp
             if (accsListView.SelectedIndex != -1)
             {
                 int index = accsListView.SelectedIndex;
-                accountManager.Accounts[index].transactionManager.SortTransactions(Enums.SortBy.Amount);
+                accountManager.Accounts[index].TransactionManager.SortTransactions(Enums.SortBy.Amount);
             }
+        }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBoxes.DisplayQuestion("Do you want to exit the application?\n" +
+                "Unsaved changes will be lost", "Exit?"))
+            {
+                this.Close();
+            }
+        }
+
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog save = new()
+            {
+                Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*"
+            };
+
+            if (save.ShowDialog() == true)
+            {
+                try
+                {
+                    fileManager.Serialize(save.FileName, accountManager);
+                }
+                catch (Exception ex)
+                {
+                    MessageBoxes.DisplayErrorBox(ex.Message);
+                }
+
+                MessageBoxes.DisplayInfoBox("Successful save!", "File saved");
+            }
+        }
+
+        private void LoadBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog open = new()
+            {
+                Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*"
+            };
+
+            if (open.ShowDialog() == true)
+            {
+                try
+                {
+                    var newAccountManager = fileManager.Deserialize(open.FileName);
+
+                    accountManager.Accounts.Clear();
+
+                    foreach (var account in newAccountManager.Accounts)
+                    {
+                        accountManager.Accounts.Add(account);
+                    }
+
+                    accountTransactionObserver.ObservableAccounts.Clear();
+                    foreach (var account in newAccountManager.Accounts)
+                    {
+                        accountTransactionObserver.ObservableAccounts.Add(account);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBoxes.DisplayErrorBox(ex.Message);
+                }
+            }
+        }
+
+        private void SetLimitsBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SearchBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
