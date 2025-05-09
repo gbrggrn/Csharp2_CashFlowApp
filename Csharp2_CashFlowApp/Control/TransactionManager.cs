@@ -13,13 +13,9 @@ namespace Csharp2_CashFlowApp.Control
         //Transaction-collection
         internal ObservableCollection<Transaction> transactionEntries;
 
-        //Fallback when sorting
-        internal ObservableCollection<Transaction> transactionEntriesFallback;
-
         public TransactionManager()
         {
             transactionEntries = [];
-            transactionEntriesFallback = [];
         }
         
         internal void AddTransaction(TransactionDTO transactionDTO)
@@ -45,9 +41,6 @@ namespace Csharp2_CashFlowApp.Control
         {
             //Instantiate TransactionSorter with sorting instruction
             TransactionSorter transactionSorter = new(sortByIn);
-
-            //Save the collection as fallback
-            transactionEntriesFallback = transactionEntries;
 
             //Clear transactionEntries (that is observed by the UI)
             transactionEntries.Clear();

@@ -48,6 +48,29 @@ namespace Csharp2_CashFlowApp.Model
         public Account()
         {
             transactionManager = new();
+            //Observe changes to transaction collection, upon change:
+            //Pass sender/args to eventhandler and call UpdateBalance()
+            transactionManager.transactionEntries.CollectionChanged += (s, e) => UpdateBalance();
+        }
+
+        private void UpdateBalance()
+        {
+            double totalRevenue = 0.0;
+            double totalExpenses = 0.0;
+
+            foreach (Transaction transaction in transactionManager.transactionEntries)
+            {
+                if (transaction.Category?.CategoryType == Enums.CategoryType.Revenue)
+                {
+                    totalRevenue += transaction.Amount;
+                }
+                else
+                {
+                    totalExpenses += transaction.Amount;
+                }
+            }
+
+            Balance = totalRevenue - totalExpenses;
         }
 
         public void OnPropertyChanged(string propertyName)

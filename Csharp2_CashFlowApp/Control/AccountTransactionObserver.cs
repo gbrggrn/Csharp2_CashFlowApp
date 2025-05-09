@@ -26,7 +26,6 @@ namespace Csharp2_CashFlowApp.Control
                 //Get the transactionmanager of the selected account
                 if (SelectedAccount?.transactionManager.transactionEntries != null)
                 {
-                    Console.WriteLine("Transactions observed");
                     return SelectedAccount?.transactionManager.transactionEntries!;
                 }
                 else

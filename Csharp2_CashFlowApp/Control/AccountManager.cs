@@ -32,7 +32,6 @@ namespace Csharp2_CashFlowApp.Control
         {
             var newAccount = new Account { Name = accountName };
             Accounts.Add(newAccount);
-            Console.WriteLine($"Account added {accountName}");
         }
 
         /// <summary>
