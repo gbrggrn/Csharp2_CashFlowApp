@@ -32,8 +32,8 @@ namespace Csharp2_CashFlowApp
         {
             InitializeComponent();
             DataContext = this;
-            SearchableTransactions = new ObservableCollection<Transaction>();
-            SearchResults = new ObservableCollection<Transaction>();
+            SearchableTransactions = [];
+            SearchResults = [];
             LoadComboBoxes();
             LoadSearchableTransactions(searchableTransactionsIn);
         }
@@ -66,7 +66,7 @@ namespace Csharp2_CashFlowApp
             searchTxtBox.Clear();
             descriptionRadioBtn.IsChecked = false;
             categoryNameComboBox.SelectedIndex = -1;
-            dateRadioBtn.IsChecked = false;
+            datePicker.SelectedDate = DateTime.Now;
             expensesCheckBox.IsChecked = false;
             revenuesCheckBox.IsChecked = false;
             monthComboBox.SelectedIndex = 13;
@@ -89,13 +89,17 @@ namespace Csharp2_CashFlowApp
             {
                 bool match = true;
 
-                if (descriptionRadioBtn.IsChecked == true || dateRadioBtn.IsChecked == true)
+                if (descriptionRadioBtn.IsChecked == true)
                 {
                     if (descriptionRadioBtn.IsChecked == true && !transaction.Description.Contains(searchTerm, StringComparison.Ordinal))
                     {
                         match = false;
                     }
-                    if (dateRadioBtn.IsChecked == true && !transaction.Date.ToShortDateString().Equals(searchTerm))
+                }
+
+                if (datePicker.SelectedDate.HasValue)
+                {
+                    if (!transaction.Date.Equals(datePicker.SelectedDate))
                     {
                         match = false;
                     }

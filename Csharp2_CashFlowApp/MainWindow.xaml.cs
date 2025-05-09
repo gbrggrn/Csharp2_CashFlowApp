@@ -22,7 +22,7 @@ namespace Csharp2_CashFlowApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        private AccountManager accountManager;
+        private readonly AccountManager accountManager;
         private readonly AccountTransactionObserver accountTransactionObserver;
         private readonly FileManager fileManager;
 
@@ -162,7 +162,7 @@ namespace Csharp2_CashFlowApp
             if (transactionListView.Items.Count > 0)
             {
                 int index = accsListView.SelectedIndex;
-                ReportWindow reportWindow = new ReportWindow(accountManager, index);
+                ReportWindow reportWindow = new(accountManager, index);
 
                 reportWindow.ShowDialog();
             }
@@ -179,7 +179,7 @@ namespace Csharp2_CashFlowApp
             descriptionTxtBox.Clear();
         }
 
-        private void monthSortRadioBtn_Checked(object sender, RoutedEventArgs e)
+        private void MonthSortRadioBtn_Checked(object sender, RoutedEventArgs e)
         {
             if (accsListView.SelectedIndex != -1)
             {
@@ -188,7 +188,7 @@ namespace Csharp2_CashFlowApp
             }
         }
 
-        private void categoryTypeSortRadioBtn_Checked(object sender, RoutedEventArgs e)
+        private void CategoryTypeSortRadioBtn_Checked(object sender, RoutedEventArgs e)
         {
             if (accsListView.SelectedIndex != -1)
             {
@@ -197,7 +197,7 @@ namespace Csharp2_CashFlowApp
             }
         }
 
-        private void categoryNameSortRadioBtn_Checked(object sender, RoutedEventArgs e)
+        private void CategoryNameSortRadioBtn_Checked(object sender, RoutedEventArgs e)
         {
             if (accsListView.SelectedIndex != -1)
             {
@@ -206,7 +206,7 @@ namespace Csharp2_CashFlowApp
             }
         }
 
-        private void amountSortRadioBtn_Checked(object sender, RoutedEventArgs e)
+        private void AmountSortRadioBtn_Checked(object sender, RoutedEventArgs e)
         {
             if (accsListView.SelectedIndex != -1)
             {
@@ -286,7 +286,7 @@ namespace Csharp2_CashFlowApp
 
         private void SearchBtn_Click(object sender, RoutedEventArgs e)
         {
-            ObservableCollection<Transaction> allTransactions = new ObservableCollection<Transaction>();
+            ObservableCollection<Transaction> allTransactions = [];
 
             foreach (Account account in accountManager.Accounts)
             {
@@ -295,7 +295,7 @@ namespace Csharp2_CashFlowApp
                     allTransactions.Add(transaction);
                 }
             }
-            SearchWindow searchWindow = new SearchWindow(allTransactions);
+            SearchWindow searchWindow = new(allTransactions);
 
             searchWindow.ShowDialog();
         }

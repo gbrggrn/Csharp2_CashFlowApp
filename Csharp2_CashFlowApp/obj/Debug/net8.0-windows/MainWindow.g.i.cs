@@ -361,7 +361,7 @@ namespace Csharp2_CashFlowApp {
             this.monthSortRadioBtn = ((System.Windows.Controls.RadioButton)(target));
             
             #line 35 "..\..\..\MainWindow.xaml"
-            this.monthSortRadioBtn.Checked += new System.Windows.RoutedEventHandler(this.monthSortRadioBtn_Checked);
+            this.monthSortRadioBtn.Checked += new System.Windows.RoutedEventHandler(this.MonthSortRadioBtn_Checked);
             
             #line default
             #line hidden
@@ -373,7 +373,7 @@ namespace Csharp2_CashFlowApp {
             this.categoryTypeSortRadioBtn = ((System.Windows.Controls.RadioButton)(target));
             
             #line 37 "..\..\..\MainWindow.xaml"
-            this.categoryTypeSortRadioBtn.Checked += new System.Windows.RoutedEventHandler(this.categoryTypeSortRadioBtn_Checked);
+            this.categoryTypeSortRadioBtn.Checked += new System.Windows.RoutedEventHandler(this.CategoryTypeSortRadioBtn_Checked);
             
             #line default
             #line hidden
@@ -385,7 +385,7 @@ namespace Csharp2_CashFlowApp {
             this.categoryNameSortRadioBtn = ((System.Windows.Controls.RadioButton)(target));
             
             #line 39 "..\..\..\MainWindow.xaml"
-            this.categoryNameSortRadioBtn.Checked += new System.Windows.RoutedEventHandler(this.categoryNameSortRadioBtn_Checked);
+            this.categoryNameSortRadioBtn.Checked += new System.Windows.RoutedEventHandler(this.CategoryNameSortRadioBtn_Checked);
             
             #line default
             #line hidden
@@ -397,7 +397,7 @@ namespace Csharp2_CashFlowApp {
             this.amountSortRadioBtn = ((System.Windows.Controls.RadioButton)(target));
             
             #line 41 "..\..\..\MainWindow.xaml"
-            this.amountSortRadioBtn.Checked += new System.Windows.RoutedEventHandler(this.amountSortRadioBtn_Checked);
+            this.amountSortRadioBtn.Checked += new System.Windows.RoutedEventHandler(this.AmountSortRadioBtn_Checked);
             
             #line default
             #line hidden

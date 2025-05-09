@@ -32,13 +32,13 @@
         <!-- Sorting controls -->
         <StackPanel Grid.Row="3" Orientation="Horizontal">
             <Label x:Name="monthSortLbl" Content="Sort by month" Margin="10,0,0,0"/>
-            <RadioButton x:Name="monthSortRadioBtn" VerticalAlignment="Center" Margin="0,0,10,0" Checked="monthSortRadioBtn_Checked"/>
+            <RadioButton x:Name="monthSortRadioBtn" VerticalAlignment="Center" Margin="0,0,10,0" Checked="MonthSortRadioBtn_Checked"/>
             <Label x:Name="categoryTypeSortLbl" Content="Sort by category type"/>
-            <RadioButton x:Name="categoryTypeSortRadioBtn" VerticalAlignment="Center" Margin="0,0,10,0" Checked="categoryTypeSortRadioBtn_Checked"/>
+            <RadioButton x:Name="categoryTypeSortRadioBtn" VerticalAlignment="Center" Margin="0,0,10,0" Checked="CategoryTypeSortRadioBtn_Checked"/>
             <Label x:Name="categoryNameSortLbl" Content="Sort by category name"/>
-            <RadioButton x:Name="categoryNameSortRadioBtn" VerticalAlignment="Center" Margin="0,0,10,0" Checked="categoryNameSortRadioBtn_Checked"/>
+            <RadioButton x:Name="categoryNameSortRadioBtn" VerticalAlignment="Center" Margin="0,0,10,0" Checked="CategoryNameSortRadioBtn_Checked"/>
             <Label x:Name="amountSortLbl" Content="Sort by amount"/>
-            <RadioButton x:Name="amountSortRadioBtn" VerticalAlignment="Center" Margin="0,0,10,0" Checked="amountSortRadioBtn_Checked"/>
+            <RadioButton x:Name="amountSortRadioBtn" VerticalAlignment="Center" Margin="0,0,10,0" Checked="AmountSortRadioBtn_Checked"/>
         </StackPanel>
         
         <!-- Transaction ListView -->

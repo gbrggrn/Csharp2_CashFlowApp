@@ -31,7 +31,7 @@ namespace Csharp2_CashFlowApp.Control
                 else
                 {
                     //If no transactionmanager found (unlikely) - return a new, empty instance
-                    return new ObservableCollection<Transaction>();
+                    return [];
                 }
             }
         }
