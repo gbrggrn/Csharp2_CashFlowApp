@@ -34,5 +34,22 @@ namespace Csharp2_CashFlowApp.Model
             CategoryType,
             Amount
         }
+
+        public enum Months
+        {
+            All,
+            January,
+            February,
+            March,
+            April,
+            May,
+            June,
+            July,
+            August,
+            September,
+            October,
+            November,
+            December,
+        }
     }
 }

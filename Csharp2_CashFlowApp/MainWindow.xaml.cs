@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using System.Reflection.Metadata;
+using System.Collections.ObjectModel;
 
 namespace Csharp2_CashFlowApp
 {
@@ -285,7 +286,18 @@ namespace Csharp2_CashFlowApp
 
         private void SearchBtn_Click(object sender, RoutedEventArgs e)
         {
+            ObservableCollection<Transaction> allTransactions = new ObservableCollection<Transaction>();
 
+            foreach (Account account in accountManager.Accounts)
+            {
+                foreach (Transaction transaction in account.TransactionManager.TransactionEntries)
+                {
+                    allTransactions.Add(transaction);
+                }
+            }
+            SearchWindow searchWindow = new SearchWindow(allTransactions);
+
+            searchWindow.ShowDialog();
         }
     }
 }
