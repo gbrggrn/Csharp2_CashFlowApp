@@ -17,9 +17,5 @@ namespace Csharp2_CashFlowApp.Model
         public List<string> Top3Expenses { get; set; } = [];
 
         public double NetCashFlow { get; set; } = 0.0;
-
-        //Formatting getters
-        public string Top3RevenuesDisplay => string.Join(", ", Top3Revenues);
-        public string Top3ExpensesDisplay => string.Join(", ", Top3Expenses);
     }
 }

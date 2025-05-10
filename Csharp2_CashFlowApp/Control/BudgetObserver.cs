@@ -10,6 +10,9 @@ using Csharp2_CashFlowApp.Model;
 
 namespace Csharp2_CashFlowApp.Control
 {
+    /// <summary>
+    /// Responsible for observing budgets, accounts and transactions and react to exceedings of budgets.
+    /// </summary>
     class BudgetObserver
     {
         public ObservableCollection<Account> Accounts { get; set; }
@@ -18,6 +21,12 @@ namespace Csharp2_CashFlowApp.Control
         private readonly BudgetManager budgetManager;
         private readonly MainWindow mainWindow;
 
+        /// <summary>
+        /// Constructor initializes and subscribes to the changes in Acconts.
+        /// </summary>
+        /// <param name="mainWindowIn">The current mainWindow instance</param>
+        /// <param name="accountManagerIn">The main accountManager</param>
+        /// <param name="budgetManagerIn">The main budgetManager</param>
         public BudgetObserver(MainWindow mainWindowIn, AccountManager accountManagerIn, BudgetManager budgetManagerIn)
         {
             this.budgetManager = budgetManagerIn;
@@ -27,8 +36,14 @@ namespace Csharp2_CashFlowApp.Control
             accountManager.Accounts.CollectionChanged += SubToNewAccount;
         }
 
+        /// <summary>
+        /// Subscribes a new account to ObserveBudget so it can be tracked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SubToNewAccount(object? sender, NotifyCollectionChangedEventArgs e)
         {
+            //Guard against no accounts
             if (accountManager.Accounts.Any())
             {
                 var lastAccount = accountManager.Accounts.Last();
@@ -36,6 +51,9 @@ namespace Csharp2_CashFlowApp.Control
             }
         }
 
+        /// <summary>
+        /// Rewire subscriptions when a file is loaded in.
+        /// </summary>
         public void RewireSubsUponLoad()
         {
             foreach (var account in Accounts)
@@ -44,13 +62,16 @@ namespace Csharp2_CashFlowApp.Control
             }
         }
 
+        /// <summary>
+        /// Evaluates all transactions currently logged against all budgets currently logged.
+        /// </summary>
         public void EvaluateAllTransactions()
         {
             foreach (var account in accountManager.Accounts)
             {
                 foreach (var transaction in account.TransactionManager.TransactionEntries)
                 {
-                    var categoryName = transaction.Category.CategoryName;
+                    var categoryName = transaction.Category!.CategoryName;
                     int month = transaction.Date.Month;
 
                     double aggregatedExpenses = CalculateExpenses(month, categoryName);
@@ -69,6 +90,11 @@ namespace Csharp2_CashFlowApp.Control
             }
         }
 
+        /// <summary>
+        /// Evaluates the transactionentries of an account against budgets when a new entry is made.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ObserveBudget(object? sender, NotifyCollectionChangedEventArgs e)
         {
             if (accountManager.Accounts.Any())
@@ -99,6 +125,12 @@ namespace Csharp2_CashFlowApp.Control
             }
         }
 
+        /// <summary>
+        /// Calculates aggregated expenses.
+        /// </summary>
+        /// <param name="month">The month for when expenses should be calculated</param>
+        /// <param name="categoryName">Name of the category to be calculated</param>
+        /// <returns></returns>
         private double CalculateExpenses(int month, Enums.CategoryName categoryName)
         {
             double total = 0;
@@ -107,7 +139,7 @@ namespace Csharp2_CashFlowApp.Control
             {
                 foreach (var transaction in account.TransactionManager.TransactionEntries)
                 {
-                    if (transaction.Date.Month.Equals(month) && transaction.Category.CategoryName.Equals(categoryName))
+                    if (transaction.Date.Month.Equals(month) && transaction.Category!.CategoryName.Equals(categoryName))
                     {
                         total += transaction.Amount;
                     }

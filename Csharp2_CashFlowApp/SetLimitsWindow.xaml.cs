@@ -60,8 +60,7 @@ namespace Csharp2_CashFlowApp
             if (budgetListView.SelectedIndex != -1)
             {
                 budgetManager.RemoveBudget(monthComboBox.SelectedIndex, 
-                    budgetManager.CurrentBudgets[budgetListView.SelectedIndex].CategoryName,
-                    0);
+                    budgetManager.CurrentBudgets[budgetListView.SelectedIndex].CategoryName);
             }
         }
 

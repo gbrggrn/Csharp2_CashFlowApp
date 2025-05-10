@@ -10,8 +10,17 @@ using System.Linq.Expressions;
 
 namespace Csharp2_CashFlowApp.Control
 {
+    /// <summary>
+    /// Responsible for file-operations.
+    /// </summary>
     internal class FileManager
     {
+        /// <summary>
+        /// Serializes accountManager to a jsonstring and saves to file.
+        /// </summary>
+        /// <param name="filePath">Path to be saved to</param>
+        /// <param name="accountManager">The accountManager to be serialized</param>
+        /// <exception cref="ArgumentException">Throws if file does not save</exception>
         public void Serialize(string filePath, AccountManager accountManager)
         {
             try
@@ -31,6 +40,12 @@ namespace Csharp2_CashFlowApp.Control
             }
         }
 
+        /// <summary>
+        /// Deserializes an accountManager from a saved file.
+        /// </summary>
+        /// <param name="filePath">Path of the file to be deserialized</param>
+        /// <returns>The deserialized accountManager</returns>
+        /// <exception cref="ArgumentException">Throws if everything breaks</exception>
         public AccountManager Deserialize(string filePath)
         {
             AccountManager accountManager = new();

@@ -8,23 +8,38 @@ using Csharp2_CashFlowApp.Model;
 
 namespace Csharp2_CashFlowApp.Control
 {
+    /// <summary>
+    /// Responsible for generating reports.
+    /// </summary>
     internal class ReportGenerator
     {
         private AccountManager accountManager;
         private int accountIndex;
 
+        /// <summary>
+        /// Constructur initializes.
+        /// </summary>
+        /// <param name="accountManagerIn">The main accountManager</param>
+        /// <param name="accountIndexIn">Index of the account to be reported on</param>
         public ReportGenerator(AccountManager accountManagerIn, int accountIndexIn)
         {
             accountManager = accountManagerIn;
             accountIndex = accountIndexIn;
         }
 
+        /// <summary>
+        /// Generates the data for a full year report.
+        /// </summary>
+        /// <returns>The data as a dictionary</returns>
         internal Dictionary<DateTime, (double Revenue, double Expense, double CashFlow)> GenerateFullYearData()
         {
+            //Copy transactions list for the account
             List<Transaction> transactions = accountManager.Accounts[accountIndex].TransactionManager.TransactionEntries.ToList();
 
+            //Declare new dictionary
             Dictionary<DateTime, (double Revenue, double Expense, double CashFlow)> monthlySummary = [];
 
+            //Iterate over transactions
             foreach (Transaction transaction in transactions)
             {
                 var key = new DateTime(transaction.Date.Year, transaction.Date.Month, 1);
@@ -59,21 +74,31 @@ namespace Csharp2_CashFlowApp.Control
             return monthlySummary;
         }
 
+        /// <summary>
+        /// Generates data for a monthly report.
+        /// </summary>
+        /// <returns>The data as a dictionary</returns>
         internal List<MonthReport> GenerateMonthlyData()
         {
             //Retrieve transactions for the account
             List<Transaction> transactions = accountManager.Accounts[accountIndex].TransactionManager.TransactionEntries.ToList();
+            
+            //Declare new dictionary
             Dictionary<DateTime, (Dictionary<string, double> Revenues, Dictionary<string, double> Expenses, double NetCashFlow)> sortingStructure = [];
 
+            //Iterate over transactions
             foreach (Transaction transaction in transactions)
             {
                 var key = new DateTime(transaction.Date.Year, transaction.Date.Month, 1);
 
+                //If transactions contains any transaction from the first day of a month
                 if (!sortingStructure.ContainsKey(key))
                 {
+                    //Add new empty element
                     sortingStructure[key] = (new Dictionary<string, double>(), new Dictionary<string, double>(), 0.0);
                 }
 
+                //Store element for reference
                 var current = sortingStructure[key];
 
                 //Check categorytype
@@ -114,6 +139,11 @@ namespace Csharp2_CashFlowApp.Control
             return GenerateFormattedReport(sortingStructure);
         }
 
+        /// <summary>
+        /// Generates a formatted report from GenerateMonthlyData.
+        /// </summary>
+        /// <param name="sortedStructure">The sorted report data</param>
+        /// <returns></returns>
         private List<MonthReport> GenerateFormattedReport(Dictionary<DateTime, (Dictionary<string, double> Revenues, Dictionary<string, double> Expenses, double NetCashFlow)> sortedStructure)
         {
             List<MonthReport> monthReports = [];

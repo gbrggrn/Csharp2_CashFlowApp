@@ -12,10 +12,18 @@ using Csharp2_CashFlowApp.Model;
 
 namespace Csharp2_CashFlowApp.Control
 {
+    /// <summary>
+    /// Responsible for managing budgets.
+    /// </summary>
     public class BudgetManager : INotifyPropertyChanged
     {
         public ObservableCollection<Budget> Budgets { get; }
         public ObservableCollection<Budget> currentBudgets;
+
+        /// <summary>
+        /// Handles changes to CurrentBudgets.
+        /// CurrentBudgets is UI-observed by the listview in setLimitsWindow.
+        /// </summary>
         public ObservableCollection<Budget> CurrentBudgets
         {
             get => currentBudgets;
@@ -33,6 +41,10 @@ namespace Csharp2_CashFlowApp.Control
 
         public int selectedMonth;
 
+        /// <summary>
+        /// Handles changes to selectedMonth.
+        /// SelectedMonth is UI-bound to the monthComboBox of setLimitsWindow.
+        /// </summary>
         public int SelectedMonth
         {
             get => selectedMonth;
@@ -41,13 +53,15 @@ namespace Csharp2_CashFlowApp.Control
                 if (selectedMonth != value)
                 {
                     selectedMonth = value;
-                    Console.WriteLine(selectedMonth);
                     OnPropertyChanged(nameof(SelectedMonth));
                     UpdateBudgets();
                 }
             }
         }
         
+        /// <summary>
+        /// Constructor initializes.
+        /// </summary>
         public BudgetManager()
         {
             Budgets = [];
@@ -56,6 +70,9 @@ namespace Csharp2_CashFlowApp.Control
             SelectedMonth = 0;
         }
 
+        /// <summary>
+        /// Updates the budgets of CurrentBudgets.
+        /// </summary>
         public void UpdateBudgets()
         {
             CurrentBudgets.Clear();
@@ -69,11 +86,18 @@ namespace Csharp2_CashFlowApp.Control
             }
         }
 
+        /// <summary>
+        /// Event helper.
+        /// </summary>
+        /// <param name="propertyName">Name of the property that changed</param>
         public void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        /// <summary>
+        /// Populates the Budgets collection with months, categoryNames and initial budget value of zero.
+        /// </summary>
         private void PopulateBudgets()
         {
             foreach (var month in Enum.GetValues(typeof(Enums.Months))) 
@@ -87,6 +111,12 @@ namespace Csharp2_CashFlowApp.Control
             }
         }
 
+        /// <summary>
+        /// Adds a new CategoryBudget to a Budget instance.
+        /// </summary>
+        /// <param name="month">The selected month</param>
+        /// <param name="categoryName">The selected CategoryName</param>
+        /// <param name="newBudget">The new budget value</param>
         public void AddBudget(int month, Enums.CategoryName categoryName, double newBudget)
         {
             foreach (var thisBudget in Budgets)
@@ -98,10 +128,16 @@ namespace Csharp2_CashFlowApp.Control
                 }
             }
 
+            //Call update to make UI react
             UpdateBudgets();
         }
 
-        public void RemoveBudget(int month, Enums.CategoryName categoryName, double newBudget)
+        /// <summary>
+        /// Removes, or rather resets a chosen CategoryBudget to zero.
+        /// </summary>
+        /// <param name="month">The selected month</param>
+        /// <param name="categoryName">The selected categoryName</param>
+        public void RemoveBudget(int month, Enums.CategoryName categoryName)
         {
             foreach (var thisBudget in Budgets)
             {
