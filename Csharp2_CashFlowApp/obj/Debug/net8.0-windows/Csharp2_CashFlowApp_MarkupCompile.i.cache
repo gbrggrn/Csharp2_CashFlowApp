@@ -8,12 +8,12 @@ C:\Users\gusta\source\repos\C#\MAU_C#\C#2\Csharp2_CashFlowApp\Csharp2_CashFlowAp
 Csharp2_CashFlowApp
 none
 false
-TRACE;DEBUG;NET;NET8_0;NETCOREAPP
+TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\Users\gusta\source\repos\C#\MAU_C#\C#2\Csharp2_CashFlowApp\Csharp2_CashFlowApp\App.xaml
 4-1511760968
 
 24-45575027
-198-556154604
+198338916705
 MainWindow.xaml;ReportWindow.xaml;SearchWindow.xaml;SetLimitsWindow.xaml;
 
 False
